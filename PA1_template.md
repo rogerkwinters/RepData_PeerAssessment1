@@ -115,7 +115,7 @@ I decided the use the mean of all steps in the activity data to fill in the miss
 
 ```r
 activity_data_imputed <- activity_data
-activity_data_imputed$steps <- as.integer(with(activity_data_imputed, round(impute(steps, mean))))
+activity_data_imputed$steps <- with(activity_data_imputed, impute(steps, mean))
 steps_per_day_imputed <- aggregate(steps ~ date, activity_data_imputed, sum)
 ```
 
@@ -127,7 +127,7 @@ mean(steps_per_day_imputed$steps)
 ```
 
 ```
-## [1] 10751.74
+## [1] 10766.19
 ```
 
 ```r
@@ -135,10 +135,10 @@ median(steps_per_day_imputed$steps)
 ```
 
 ```
-## [1] 10656
+## [1] 10766.19
 ```
 
-The average number of steps has declined slightly.
+The average number of steps hasn't really changed much.
 
 
 ```r
