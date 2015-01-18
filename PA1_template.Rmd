@@ -29,7 +29,15 @@ median(steps_per_day$steps)
 
 ## What is the average daily activity pattern?
 
+```{r}
+avg_daily_pattern <- tapply(activity_data$steps, activity_data$interval, mean, na.rm = TRUE)
 
+plot(row.names(avg_daily_pattern), avg_daily_pattern, type = "l", xlab = "5-min Intervals", 
+        ylab = "Average Number of Steps Taken Across All Days", main = "Average Daily Activity Pattern")
+
+largest_interval <- which.max(avg_daily_pattern)
+names(largest_interval)
+```
 
 ## Imputing missing values
 
